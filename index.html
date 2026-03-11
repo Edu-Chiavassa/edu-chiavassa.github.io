@@ -5,210 +5,217 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IDCE – Instituto de Derecho Comercial y de la Empresa</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    /* ─── VARIABLES Y CONFIGURACIÓN ─── */
+    /* ─── BASE (TU ORIGINAL) ─── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --crimson: #8B0000;
+      --crimson-deep: #5C0000;
+      --crimson-mid: #A31515;
       --gold: #C8A96E;
+      --gold-light: #E8D4A8;
       --ink: #0F0A06;
       --smoke: #F7F4F0;
-      --white: #FFFFFF;
+      --fog: #EDE8E1;
+      --muted: #6B5C4E;
       --line: #D6CCC0;
+      --white: #FFFFFF;
     }
-
     html { scroll-behavior: smooth; }
-    body { font-family: 'Outfit', sans-serif; color: var(--ink); background: var(--white); line-height: 1.6; }
+    body { font-family: 'Outfit', sans-serif; background: var(--smoke); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
 
-    /* ─── CABECERA DE LOGOS (ORDENADOS) ─── */
-    .top-bar {
+    /* ─── MEJORA: LOGOS SUPERIORES PAREJOS ─── */
+    .top-bar-logos {
       background: var(--white);
-      padding: 20px 0;
+      padding: 15px 0;
       border-bottom: 1px solid var(--line);
     }
-    .logo-container {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-around; /* Los separa equitativamente */
-      align-items: center;
-      padding: 0 2rem;
-    }
-    .logo-container img {
-      height: 85px; /* Altura generosa y pareja */
-      width: auto;
-      object-fit: contain;
-    }
-
-    /* ─── NAVEGACIÓN ─── */
-    nav {
-      background: var(--white);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-wrapper {
+    .logo-wrapper {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
-      justify-content: center;
-      padding: 15px 0;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 2rem;
     }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--ink);
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
-      font-weight: 500;
-      transition: 0.3s;
+    .logo-wrapper img { height: 75px; width: auto; object-fit: contain; }
+
+    /* ─── NAV RESPONSIVO ─── */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(247, 244, 240, 0.96);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 4rem; height: 80px;
     }
+    .nav-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-sigil { width: 45px; height: 45px; background: var(--crimson); display: flex; align-items: center; justify-content: center; }
+    .nav-sigil span { font-family: 'Cormorant Garamond'; color: var(--gold-light); font-weight: 600; }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a { text-decoration: none; font-size: 0.73rem; font-weight: 500; text-transform: uppercase; color: var(--muted); letter-spacing: 0.1em; transition: 0.2s; }
     .nav-links a:hover { color: var(--crimson); }
 
-    /* Menú móvil */
+    /* Menu Hamburguesa */
     .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .menu-toggle span { width: 25px; height: 3px; background: var(--crimson); }
 
-    /* ─── SECCIONES ─── */
-    section { padding: 80px 2rem; max-width: 1200px; margin: 0 auto; }
-    
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: center;
-      min-height: 60vh;
-    }
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      color: var(--crimson);
-      margin-bottom: 1.5rem;
-    }
+    /* ─── SECCIONES (RECUPERADAS DE TU ARCHIVO) ─── */
+    section { padding: 100px 4rem; }
+    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
+    .hero-left { background: var(--crimson-deep); color: white; padding: 80px 4rem; display: flex; flex-direction: column; justify-content: center; position: relative; }
+    .hero-title { font-family: 'Cormorant Garamond'; font-size: clamp(2.5rem, 4vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-right { background: var(--smoke); padding: 80px 4rem; display: flex; flex-direction: column; justify-content: center; }
 
-    .btn {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: var(--crimson);
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 600;
-      margin-top: 1rem;
-      transition: 0.3s;
+    /* Grillas de Contenido */
+    .grid-standard { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .card-idce { background: var(--white); padding: 2.5rem; border: 1px solid var(--line); transition: 0.3s; }
+    .card-idce:hover { transform: translateY(-5px); border-color: var(--gold); }
+    .card-idce h3 { font-family: 'Cormorant Garamond'; font-size: 1.6rem; color: var(--crimson); margin-bottom: 1rem; }
+
+    /* Eventos Listado */
+    .evento-item { display: grid; grid-template-columns: 80px 1fr auto; gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--line); }
+    .evento-day { font-family: 'Cormorant Garamond'; font-size: 2.5rem; color: var(--crimson); font-weight: 600; line-height: 1; }
+
+    /* ─── CONTACTO CON FONDO BIBLIOTECA ─── */
+    .footer-section {
+      background: linear-gradient(rgba(139, 0, 0, 0.9), rgba(61, 0, 0, 0.9)), url('BIBLIOTECA UCC.jfif');
+      background-size: cover; background-position: center; background-attachment: fixed;
+      color: white;
     }
-    .btn:hover { background: var(--ink); transform: translateY(-2px); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; padding: 80px 4rem; max-width: 1200px; margin: 0 auto; }
+    .form-group input, .form-group textarea { width: 100%; padding: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; margin-bottom: 1rem; }
+    .btn-send { background: var(--gold); color: var(--crimson-deep); padding: 12px 25px; border: none; font-weight: 600; cursor: pointer; text-transform: uppercase; }
 
-    /* ─── AUTORIDADES ─── */
-    .grid-aut { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
-    .card { background: var(--smoke); padding: 2.5rem; border-top: 4px solid var(--gold); }
-    .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--crimson); }
-
-    /* ─── FONDO BIBLIOTECA UCC ─── */
-    .bg-biblioteca {
-      position: relative;
-      background: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), 
-                  url('BIBLIOTECA UCC.jfif');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed; /* Efecto elegante al scrollear */
-      width: 100%;
-    }
-
-    /* ─── FORMULARIO ─── */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    input, textarea {
-      width: 100%; padding: 1rem; margin-bottom: 1rem;
-      border: 1px solid var(--line); font-family: inherit;
-    }
-
-    footer { text-align: center; padding: 4rem 2rem; border-top: 1px solid var(--line); background: var(--white); }
+    footer { background: #1A0000; padding: 2rem 4rem; display: flex; justify-content: space-between; color: rgba(255,255,255,0.4); font-size: 0.8rem; }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      .logo-container { flex-direction: column; gap: 1.5rem; }
-      .logo-container img { height: 60px; }
-      .menu-toggle { display: flex; position: absolute; right: 20px; top: 18px; }
-      .nav-links {
-        display: none; flex-direction: column; position: absolute;
-        top: 60px; left: 0; width: 100%; background: var(--white);
-        padding: 2rem; border-bottom: 1px solid var(--line);
-      }
+      .logo-wrapper { flex-direction: column; gap: 1.5rem; }
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: var(--smoke); padding: 2rem; border-bottom: 1px solid var(--line); }
       .nav-links.active { display: flex; }
-      .hero, .grid-aut, .contact-grid { grid-template-columns: 1fr; text-align: center; }
+      .menu-toggle { display: flex; }
+      .hero, .contact-grid { grid-template-columns: 1fr; }
+      .hero-right, .hero-left { padding: 3rem 1.5rem; }
+      .evento-item { grid-template-columns: 60px 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <div class="top-bar">
-    <div class="logo-container">
-      <img src="IDCE LOGO.jpeg" alt="Logo IDCE">
-      <img src="UCC LOGO.png" alt="Logo UCC">
+  <div class="top-bar-logos">
+    <div class="logo-wrapper">
+      <img src="IDCE LOGO.jpeg" alt="IDCE">
+      <img src="UCC LOGO.png" alt="UCC">
     </div>
   </div>
 
-  <nav>
-    <div class="nav-wrapper">
-      <div class="menu-toggle" onclick="document.getElementById('nav-list').classList.toggle('active')">
-        <span></span><span></span><span></span>
+  <nav id="main-nav">
+    <a href="#inicio" class="nav-brand">
+      <div class="nav-sigil"><span>ID</span></div>
+      <div class="nav-name">
+        <strong>IDCE</strong>
+        <small>Universidad Católica de Córdoba</small>
       </div>
-      <ul class="nav-links" id="nav-list">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#autoridades">Autoridades</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
+    </a>
+    <div class="menu-toggle" onclick="document.getElementById('nav-list').classList.toggle('active')">
+      <span></span><span></span><span></span>
     </div>
+    <ul class="nav-links" id="nav-list">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#autoridades">Autoridades</a></li>
+      <li><a href="#actividades">Actividades</a></li>
+      <li><a href="#publicaciones">Publicaciones</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
   </nav>
 
-  <section id="inicio" class="hero">
-    <div>
-      <h1>Instituto de Derecho Comercial y de la Empresa</h1>
-      <p>Excelencia académica e investigación jurídica en la Universidad Católica de Córdoba.</p>
-      <a href="#contacto" class="btn">Más información</a>
-    </div>
-    <div style="text-align: right;">
+  <section id="inicio" style="padding:0;">
+    <div class="hero">
+      <div class="hero-left">
+        <h1 class="hero-title">Instituto de Derecho<br><em>Comercial y de la Empresa</em></h1>
+        <p>Un espacio dedicado al estudio, debate y difusión del derecho comercial y empresarial en Argentina.</p>
+      </div>
+      <div class="hero-right">
+        <div style="border-bottom: 1px solid var(--line); padding-bottom: 1rem; margin-bottom: 1rem;">
+          <h2 style="font-size: 3rem; color: var(--crimson); font-family: 'Cormorant Garamond';">15+</h2>
+          <p>Años de trayectoria académica</p>
         </div>
+        <div>
+          <h2 style="font-size: 3rem; color: var(--crimson); font-family: 'Cormorant Garamond';">500+</h2>
+          <p>Profesionales formados</p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="autoridades">
-    <h2 style="font-family:'Cormorant Garamond'; font-size: 3rem; text-align: center;">Autoridades</h2>
-    <div class="grid-aut">
-      <div class="card">
-        <h3>Director</h3>
-        <p>Dr. Nombre del Director</p>
+    <h2 style="font-family:'Cormorant Garamond'; font-size: 2.5rem; text-align: center;">Autoridades</h2>
+    <div class="grid-standard">
+      <div class="card-idce">
+        <p style="text-transform: uppercase; font-size: 0.7rem; color: var(--gold);">Dirección</p>
+        <h3>Dr. [Nombre del Director]</h3>
       </div>
-      <div class="card">
-        <h3>Secretaría</h3>
-        <p>Dra. Nombre de Secretaria</p>
+      <div class="card-idce">
+        <p style="text-transform: uppercase; font-size: 0.7rem; color: var(--gold);">Consejo Académico</p>
+        <h3>Cuerpo Docente IDCE</h3>
       </div>
     </div>
   </section>
 
-  <div class="bg-biblioteca">
+  <section id="actividades" style="background: var(--white);">
+    <h2 style="font-family:'Cormorant Garamond'; font-size: 2.5rem; margin-bottom: 2rem;">Actividades Recientes</h2>
+    <div class="evento-item">
+      <div class="evento-day">15<br><span style="font-size: 0.8rem; text-transform: uppercase; color: var(--muted);">Abr</span></div>
+      <div>
+        <p style="color: var(--crimson); font-size: 0.7rem; text-transform: uppercase;">Seminario</p>
+        <h3 style="font-family:'Cormorant Garamond'; font-size: 1.4rem;">Nuevas Tendencias en Derecho Societario</h3>
+        <p style="font-size: 0.9rem; color: var(--muted);">Análisis de las reformas vigentes.</p>
+      </div>
+      <div style="align-self: center;"><a href="#" style="color: var(--crimson); font-size: 0.8rem; font-weight: 600;">INFO</a></div>
+    </div>
+    </section>
+
+  <section id="publicaciones">
+    <h2 style="font-family:'Cormorant Garamond'; font-size: 2.5rem; margin-bottom: 2rem; text-align: center;">Publicaciones e Investigación</h2>
+    <div class="grid-standard">
+      <div class="card-idce">
+        <h3>Artículos Académicos</h3>
+        <p>Investigaciones producidas por miembros del instituto.</p>
+        <a href="#" style="color: var(--crimson); display: block; margin-top: 1rem; font-weight: 600;">LEER MÁS →</a>
+      </div>
+      <div class="card-idce">
+        <h3>Doctrina y Jurisprudencia</h3>
+        <p>Compendios actualizados del sector empresarial.</p>
+        <a href="#" style="color: var(--crimson); display: block; margin-top: 1rem; font-weight: 600;">LEER MÁS →</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer-section">
     <section id="contacto">
       <div class="contact-grid">
         <div>
           <h2 style="font-family:'Cormorant Garamond'; font-size: 3rem;">Contacto</h2>
-          <p style="margin: 20px 0;">Para consultas sobre seminarios, diplomaturas o convenios institucionales.</p>
+          <p style="margin: 1.5rem 0; opacity: 0.8;">Para consultas institucionales o académicas.</p>
           <p><strong>Email:</strong> idce.ucc@gmail.com</p>
-          <p><strong>Sede:</strong> Córdoba, Argentina</p>
+          <p><strong>Sede:</strong> Trejo 323, Córdoba.</p>
         </div>
-        <form>
+        <form class="form-group">
           <input type="text" placeholder="Nombre completo">
           <input type="email" placeholder="Correo electrónico">
-          <textarea placeholder="Consulta" rows="4"></textarea>
-          <button type="submit" class="btn" style="width:100%; border:none; cursor:pointer;">Enviar Consulta</button>
+          <textarea rows="4" placeholder="Su consulta"></textarea>
+          <button type="submit" class="btn-send">Enviar Mensaje</button>
         </form>
       </div>
     </section>
+    <footer>
+      <span>IDCE · Instituto de Derecho Comercial y de la Empresa</span>
+      <span>© 2026 Universidad Católica de Córdoba</span>
+    </footer>
   </div>
-
-  <footer>
-    <p>© 2026 IDCE – UCC. Instituto de Derecho Comercial y de la Empresa.</p>
-  </footer>
 
 </body>
 </html>
